@@ -1,18 +1,30 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
+// backend/src/app.js
 
-const itemsRoutes = require("./src/routes/itemsRoutes");
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+
+// Middleware
+const errorHandler = require('./middleware/errorHandler');
+const logger = require('./middleware/logger');
+
+// Routes
+const itemsRoutes = require('./routes/itemsRoutes');
 
 const app = express();
 
-// middleware
-app.use(cors());
-app.use(express.json());
-app.use(morgan("dev"));
+// --- Global Middlewares ---
+app.use(cors());               // Enable CORS for frontend access
+app.use(express.json());       // Parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // For form-data if needed
 
-// routes
-app.use("/api/items", itemsRoutes);
+app.use(morgan('dev'));        // Use morgan logger (you decided this earlier)
+app.use(logger);               // Optional custom logger if you add extra logs
+
+// --- Routes ---
+app.use('/api/items', itemsRoutes);  // All item routes start with /api/items
+
+// --- Error Handler (must be last) ---
+app.use(errorHandler);
 
 module.exports = app;
