@@ -1,5 +1,3 @@
-// backend/src/routes/itemsRoutes.js
-
 const express = require('express');
 const router = express.Router();
 
@@ -12,19 +10,21 @@ const {
   updateQuantity,
 } = require('../controllers/itemsController');
 
-// multer middleware for image upload
-const upload = require('../middleware/upload');
+// Remove upload for now (you haven't created the file)
+const imageUpload = require('../middleware/imageUpload'); 
+// ❗ If this file does NOT exist, remove this line entirely.
 
-// Routes
-router.get('/items', getAllItems);
-router.get('/items/:id', getItemById);
 
-router.post('/items', upload.single('image'), createItem);
+// --- Correct Routes ---
+router.get('/', getAllItems);
+router.get('/:id', getItemById);
 
-router.put('/items/:id', updateItem);
+router.post('/', imageUpload.single('image'), createItem);
 
-router.delete('/items/:id', deleteItem);
+router.put('/:id', updateItem);
 
-router.patch('/items/:id/quantity', updateQuantity);
+router.delete('/:id', deleteItem);
+
+router.patch('/:id/quantity', updateQuantity);
 
 module.exports = router;

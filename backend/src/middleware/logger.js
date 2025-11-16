@@ -1,6 +1,6 @@
 // backend/src/middleware/logger.js
-import morgan from "morgan";
+const morgan = require("morgan");
 
 const logger = morgan("dev"); // logs: GET /items 200 20ms
 
-export default logger;
+module.exports = logger;
