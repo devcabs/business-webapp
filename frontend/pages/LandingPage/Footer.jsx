@@ -1,13 +1,7 @@
-export default function Hero() {
+export default function Footer() {
   return (
-    <section className="text-center max-w-2xl px-4">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">
-        Smart Inventory Management
-      </h1>
-      <p className="mt-4 text-gray-600 text-sm sm:text-base">
-        A clean and efficient back-office tool to help you manage stock,
-        streamline operations, and keep everything organized.
-      </p>
-    </section>
+    <footer className="w-full py-4 text-center text-xs text-gray-500 border-t mt-12">
+      <p>© {new Date().getFullYear()} Inventory App. All rights reserved.</p>
+    </footer>
   );
 }
