@@ -39,19 +39,17 @@ exports.createItem = async (req, res, next) => {
     const body = req.body;
 
     const newItem = new Item({
+      SKU: body.SKU,   // ← REQUIRED FIX ✔
+
       name: body.name,
       description: body.description || "",
       unit: body.unit || "pcs",
       quantity: body.quantity || 0,
       lowStockThreshold: body.lowStockThreshold || 5,
 
-      // Save image if using multer
-      image: req.file ? req.file.path : null,
+      imageUrl: req.file ? req.file.path : body.imageUrl || "",
 
-      // Handle dynamic attributes
       attributes: body.attributes ? JSON.parse(body.attributes) : [],
-
-      // Handle variants
       variants: body.variants ? JSON.parse(body.variants) : []
     });
 
@@ -62,6 +60,7 @@ exports.createItem = async (req, res, next) => {
       message: "Item created successfully",
       data: savedItem
     });
+
   } catch (error) {
     next(error);
   }

@@ -154,12 +154,12 @@ if (import.meta.env.DEV) {
 
     try {
       // 2) create a tiny test item (change shape to match your backend schema)
-      const testPayload = { name: 'TEST_ITEM', sku: `TEST-${Date.now()}`, qty: 1 };
+      const testPayload = { name: 'TEST_ITEM', SKU: "TEST SKU", quantity: 1 };
       const created = await createItem(testPayload);
       console.log('[itemsApi][DEV] createItem response (if created):', created);
 
       // 3) update the created item (only if created returned an id)
-      const id = created?.data?.id ?? created?.id ?? created?._id;
+      const id = created.data._id;
       if (id) {
         await updateItem(id, { name: 'TEST_ITEM_UPDATED' });
         // 4) delete it
