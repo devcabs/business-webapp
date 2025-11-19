@@ -11,25 +11,25 @@ export default function Hero() {
       {/* Branch Buttons */}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <a
-          href="/app/inventory"
+          href="/inventory"
           className="block w-full px-6 py-3 bg-blue-600 text-white rounded-xl text-sm font-medium text-center shadow hover:bg-blue-700 transition"
         >
           Inventory
         </a>
         <a
-          href="/app/sales"
+          href="/sales"
           className="block w-full px-6 py-3 bg-gray-800 text-white rounded-xl text-sm font-medium text-center shadow hover:bg-gray-900 transition"
         >
           Sales
         </a>
         <a
-          href="/app/purchasing"
+          href="/purchasing"
           className="block w-full px-6 py-3 bg-green-600 text-white rounded-xl text-sm font-medium text-center shadow hover:bg-green-700 transition"
         >
           Purchasing
         </a>
         <a
-          href="/app/reports"
+          href="/reports"
           className="block w-full px-6 py-3 bg-indigo-600 text-white rounded-xl text-sm font-medium text-center shadow hover:bg-indigo-700 transition"
         >
           Reports
